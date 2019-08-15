@@ -1,0 +1,1 @@
+Necessário versão .netframework 4.6.2
