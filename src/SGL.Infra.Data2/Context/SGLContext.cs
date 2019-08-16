@@ -12,7 +12,7 @@ namespace SGL.Infra.Data.Context
     {
         public SGLContext() : base("name=strConexaoSGL")
         {
-            ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 180;
+           
         }
 
         #region 1. Entities

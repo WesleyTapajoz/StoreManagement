@@ -4,7 +4,10 @@ using SGL.Application.Services;
 using SGL.Domain.Interfaces.Repository;
 using SGL.Domain.Interfaces.Services;
 using SGL.Domain.Services;
- 
+using SGL.Infra.Data;
+using SGL.Infra.Data.Context;
+using SGL.Infra.Data.Repository;
+
 namespace SGL.Infra.IoC
 {
   public  class BootStrapper
@@ -31,11 +34,15 @@ namespace SGL.Infra.IoC
             #endregion
 
             #region Registra componentes da camada Infrastructure -> Data
-            builder.RegisterType<IAutorRepository>().As<IAutorRepository>().InstancePerLifetimeScope();
-            builder.RegisterType<IEditoraRepository>().As<IEditoraRepository>().InstancePerLifetimeScope();
-            builder.RegisterType<IGeneroRepository>().As<IGeneroRepository>().InstancePerLifetimeScope();
-            builder.RegisterType<ILinkRepository>().As<ILinkRepository>().InstancePerLifetimeScope();
-            builder.RegisterType<ILivroRepository>().As<ILivroRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<AutorRepository>().As<IAutorRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<EditoraRepository>().As<IEditoraRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<GeneroRepository>().As<IGeneroRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<LinkRepository>().As<ILinkRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<LivroRepository>().As<ILivroRepository>().InstancePerLifetimeScope();
+
+            builder.RegisterType<SGLContext>().InstancePerLifetimeScope();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
+
             #endregion
         }
     }
