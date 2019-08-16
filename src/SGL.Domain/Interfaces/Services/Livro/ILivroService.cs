@@ -1,12 +1,16 @@
 ﻿using SGL.Domain.Entity;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq.Expressions;
 
 namespace SGL.Domain.Interfaces.Services
 {
-    public interface IAutorService : IService<Autor, string>
+    public interface ILivroService : IDisposable
     {
-
+        Livro Adicionar(Livro obj);
+        Livro Atualizar(Livro obj);
+        IEnumerable<Livro> ObterTodos();
+        Livro ObterPorId(int id);
+        void Remover(int id);
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SGL.Domain.Interfaces.Repository
 {
-    public interface ILinkRepository : IRepository<Link, string>
+    public interface ILinkRepository : IRepository<Link>
     {
 
     }

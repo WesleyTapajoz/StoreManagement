@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SGL.Application\SGL.Application.csproj" />
     <ProjectReference Include="..\SGL.Domain\SGL.Domain.csproj" />
   </ItemGroup>
 

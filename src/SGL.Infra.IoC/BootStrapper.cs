@@ -1,11 +1,10 @@
 ﻿using Autofac;
+using SGL.Application.Interfaces;
+using SGL.Application.Services;
 using SGL.Domain.Interfaces.Repository;
 using SGL.Domain.Interfaces.Services;
 using SGL.Domain.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
+ 
 namespace SGL.Infra.IoC
 {
   public  class BootStrapper
@@ -17,9 +16,8 @@ namespace SGL.Infra.IoC
             builder.RegisterType<AutorAppService>().As<IAutorAppService>().InstancePerLifetimeScope();
             builder.RegisterType<EditoraAppService>().As<IEditoraAppService>().InstancePerLifetimeScope();
             builder.RegisterType<GeneroAppService>().As<IGeneroAppService>().InstancePerLifetimeScope();
-            builder.RegisterType<LinkAppService>().As<IlinkAppService>().InstancePerLifetimeScope();
+            builder.RegisterType<LinkAppService>().As<ILinkAppService>().InstancePerLifetimeScope();
             builder.RegisterType<LivroAppService>().As<ILivroAppService>().InstancePerLifetimeScope();
-
 
             #endregion
 

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SGL.Application.ViewModels
+namespace SGL.Application.Services
 {
-    public class AutalizarAutorViewModel
+   public class EditoraAppService
     {
     }
 }

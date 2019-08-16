@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SGL.Domain.Interfaces.Repository
 {
-    public interface IAutorRepository : IRepository<Autor, string>
+    public interface IEditoraRepository : IRepository<Editora>
     {
 
     }
