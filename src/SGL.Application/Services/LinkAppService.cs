@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using AutoMapper;
 using SGL.Application.Interfaces;
 using SGL.Application.ViewModels;
+using SGL.Domain.Entity;
 using SGL.Domain.Interfaces.Services;
 using SGL.Infra.Data;
 
@@ -8,42 +11,55 @@ namespace SGL.Application.Services
 {
     public class LinkAppService : ApplicationService, ILinkAppService
     {
-        private readonly ILinkService _generoService;
+        private readonly ILinkService _linkService;
 
-        public LinkAppService(ILinkService generoService, IUnitOfWork uow)
+        public LinkAppService(ILinkService linkService, IUnitOfWork uow)
             : base(uow)
         {
-            _generoService = generoService;
+            _linkService = linkService;
         }
 
         public AdicionarLinkViewModel Adicionar(AdicionarLinkViewModel obj)
         {
-            throw new System.NotImplementedException();
+            var link = Mapper.Map<AdicionarLinkViewModel, Link>(obj);
+
+            BeginTransaction();
+            var returno = _linkService.Adicionar(link);
+            Commit();
+
+            return Mapper.Map<Link, AdicionarLinkViewModel>(returno);
         }
 
         public AtualizarLinkViewModel Atualizar(AtualizarLinkViewModel obj)
         {
-            throw new System.NotImplementedException();
+            var link = Mapper.Map<AtualizarLinkViewModel, Link>(obj);
+
+            BeginTransaction();
+            var returno = _linkService.Atualizar(link);
+            Commit();
+
+            return Mapper.Map<Link, AtualizarLinkViewModel>(returno);
         }
 
         public void Dispose()
         {
-            throw new System.NotImplementedException();
+            _linkService.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public LinkViewModel ObterPorId(int id)
         {
-            throw new System.NotImplementedException();
+            return Mapper.Map<Link, LinkViewModel>(_linkService.ObterPorId(id));
         }
 
         public IEnumerable<LinkViewModel> ObterTodos()
         {
-            throw new System.NotImplementedException();
+            return Mapper.Map<IEnumerable<Link>, IEnumerable<LinkViewModel>>(_linkService.ObterTodos());
         }
 
         public void Remover(int id)
         {
-            throw new System.NotImplementedException();
+            _linkService.Remover(id);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace SGL.UI.Web.Controllers
         public ActionResult Filtrar(LivroViewModel search)
         {
             var query = _livroAppService.ObterTodos();
-            return PartialView("_Resultado", query);
+            return PartialView("_Resultado", query.ToList());
         }
 
 

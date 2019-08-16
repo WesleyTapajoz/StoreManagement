@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using AutoMapper;
 using SGL.Application.Interfaces;
 using SGL.Application.ViewModels;
+using SGL.Domain.Entity;
 using SGL.Domain.Interfaces.Services;
 using SGL.Infra.Data;
 
@@ -18,32 +21,45 @@ namespace SGL.Application.Services
 
         public AdicionarGeneroViewModel Adicionar(AdicionarGeneroViewModel obj)
         {
-            throw new System.NotImplementedException();
+            var genero = Mapper.Map<AdicionarGeneroViewModel, Genero>(obj);
+
+            BeginTransaction();
+            var returno = _generoService.Adicionar(genero);
+            Commit();
+
+            return Mapper.Map<Genero, AdicionarGeneroViewModel>(returno);
         }
 
         public AtualizarGeneroViewModel Atualizar(AtualizarGeneroViewModel obj)
         {
-            throw new System.NotImplementedException();
+            var genero = Mapper.Map<AtualizarGeneroViewModel, Genero>(obj);
+
+            BeginTransaction();
+            var returno = _generoService.Atualizar(genero);
+            Commit();
+
+            return Mapper.Map<Genero, AtualizarGeneroViewModel>(returno);
         }
 
         public void Dispose()
         {
-            throw new System.NotImplementedException();
+            _generoService.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public GeneroViewModel ObterPorId(int id)
         {
-            throw new System.NotImplementedException();
+            return Mapper.Map<Genero, GeneroViewModel>(_generoService.ObterPorId(id));
         }
 
         public IEnumerable<GeneroViewModel> ObterTodos()
         {
-            throw new System.NotImplementedException();
+            return Mapper.Map<IEnumerable<Genero>, IEnumerable<GeneroViewModel>>(_generoService.ObterTodos());
         }
 
         public void Remover(int id)
         {
-            throw new System.NotImplementedException();
+            _generoService.Remover(id);
         }
     }
 }

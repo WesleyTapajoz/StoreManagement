@@ -58,7 +58,7 @@ namespace SGL.Application.Services
 
         public void Remover(int id)
         {
-            throw new NotImplementedException();
+            _autorService.Remover(id);
         }
     }
 }

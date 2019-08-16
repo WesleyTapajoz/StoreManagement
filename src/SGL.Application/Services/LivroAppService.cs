@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using AutoMapper;
 using SGL.Application.Interfaces;
 using SGL.Application.ViewModels;
+using SGL.Domain.Entity;
 using SGL.Domain.Interfaces.Services;
 using SGL.Infra.Data;
 
@@ -18,32 +21,44 @@ namespace SGL.Application.Services
 
         public AdicionarLivroViewModel Adicionar(AdicionarLivroViewModel obj)
         {
-            throw new System.NotImplementedException();
+            BeginTransaction();
+            var autorReturn = _livroService.Adicionar(Mapper.Map<AdicionarLivroViewModel, Livro>(obj));
+            Commit();
+
+            return Mapper.Map<Livro, AdicionarLivroViewModel>(autorReturn);
         }
 
         public AtualizarLivroViewModel Atualizar(AtualizarLivroViewModel obj)
         {
-            throw new System.NotImplementedException();
+            BeginTransaction();
+            var autorReturn = _livroService.Atualizar(Mapper.Map<AtualizarLivroViewModel, Livro>(obj));
+            Commit();
+
+            return Mapper.Map<Livro, AtualizarLivroViewModel>(autorReturn);
         }
 
         public void Dispose()
         {
-            throw new System.NotImplementedException();
+            _livroService.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public LivroViewModel ObterPorId(int id)
         {
-            throw new System.NotImplementedException();
+            return Mapper.Map<Livro, LivroViewModel>(_livroService.ObterPorId(id));
+
         }
 
-        public IEnumerable<LivroViewModel> ObterTodos()
+        public IEnumerable<Livro> ObterTodos()
         {
-            throw new System.NotImplementedException();
+            var entity = _livroService.ObterTodos();
+            //var retorno = Mapper.Map<IEnumerable<Livro>, IEnumerable<LivroViewModel>>(entity);
+            return entity;
         }
 
         public void Remover(int id)
         {
-            throw new System.NotImplementedException();
+            _livroService.Remover(id);
         }
     }
 }

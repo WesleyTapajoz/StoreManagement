@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using SGL.Application.AutoMapper;
 using SGL.Infra.IoC;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace SGL.UI.Web
             BootStrapper.RegisterServices(builder);
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
- 
+            MappingConfig.RegisterMap();
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using SGL.Application.Interfaces;
+﻿using AutoMapper;
+using SGL.Application.Interfaces;
 using SGL.Application.ViewModels;
+using SGL.Domain.Entity;
 using SGL.Domain.Interfaces.Services;
 using SGL.Infra.Data;
 using System;
@@ -21,32 +23,45 @@ namespace SGL.Application.Services
 
         public AdicionarEditoraViewModel Adicionar(AdicionarEditoraViewModel obj)
         {
-            throw new NotImplementedException();
+            var editora = Mapper.Map<AdicionarEditoraViewModel, Editora>(obj);
+
+            BeginTransaction();
+            var returno = _editoraService.Adicionar(editora);
+            Commit();
+
+            return Mapper.Map<Editora, AdicionarEditoraViewModel>(returno);
         }
 
         public AtualizarEditoraViewModel Atualizar(AtualizarEditoraViewModel obj)
         {
-            throw new NotImplementedException();
+            var editora = Mapper.Map<AtualizarEditoraViewModel, Editora>(obj);
+
+            BeginTransaction();
+            var returno = _editoraService.Atualizar(editora);
+            Commit();
+
+            return Mapper.Map<Editora, AtualizarEditoraViewModel>(returno);
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _editoraService.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public EditoraViewModel ObterPorId(int id)
         {
-            throw new NotImplementedException();
+            return Mapper.Map<Editora, EditoraViewModel>(_editoraService.ObterPorId(id));
         }
 
         public IEnumerable<EditoraViewModel> ObterTodos()
         {
-            throw new NotImplementedException();
+            return Mapper.Map<IEnumerable<Editora>, IEnumerable<EditoraViewModel>>(_editoraService.ObterTodos());
         }
 
         public void Remover(int id)
         {
-            throw new NotImplementedException();
+            _editoraService.Remover(id);
         }
     }
 }
