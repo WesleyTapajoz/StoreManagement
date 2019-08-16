@@ -10,7 +10,7 @@
             @Html.DisplayNameFor(model => model.Titulo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataPublicacao)
+            @*@Html.DisplayNameFor(model => model.DataPublicacao)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Paginas)
@@ -34,7 +34,7 @@
             @Html.DisplayNameFor(model => model.Capa)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LinkId)
+            @*@Html.DisplayNameFor(model => model.LinkId)*@
         </th>
         <th></th>
     </tr>
@@ -48,7 +48,10 @@
             @Html.DisplayFor(modelItem => item.Titulo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DataPublicacao)
+            @*@Html.DisplayFor(modelItem => item.DataCadastro)
+            trocar por:
+            @Convert.ToString(string.Format("{ 0:dd / MM / yyyy}",item.DataPublicacao))
+            @Html.DisplayFor(modelItem => item.DataPublicacao)*@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Paginas)
@@ -72,7 +75,7 @@
             @Html.DisplayFor(modelItem => item.Capa)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LinkId)
+            @*@Html.DisplayFor(modelItem => item.Links)*@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

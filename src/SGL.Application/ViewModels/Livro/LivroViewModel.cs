@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace SGL.Application.ViewModels
 {
     public class LivroViewModel
     {
-          public int LivroId { get; set; }
-        public string Titulo { get; set; }      
+        public int LivroId { get; set; }
+        public string Titulo { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DataPublicacao { get; set; }
         public int Paginas { get; set; }
         public int GeneroId { get; set; }
