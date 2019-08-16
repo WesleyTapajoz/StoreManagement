@@ -1,18 +1,16 @@
 ﻿using SGL.Domain.Entity;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace SGL.Infra.Data.Context
 {
     public class SGLContext : DbContext
     {
-        public SGLContext() : base("name=strConexaoSES")
+        public SGLContext() : base("name=strConexaoSGL")
         {
             ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 180;
         }
@@ -32,13 +30,13 @@ namespace SGL.Infra.Data.Context
             modeBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modeBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
-            //var targetAssembly = Assembly.GetExecutingAssembly();
-            //var subtypes = targetAssembly.GetTypes().Where(t => t.Name.EndsWith("_Mapping"));
-            //foreach (var item in subtypes)
-            //{
-            //    dynamic configurationInstance = Activator.CreateInstance(item);
-            //    modeBuilder.Configurations.Add(configurationInstance);
-            //}
+            var targetAssembly = Assembly.GetExecutingAssembly();
+            var subtypes = targetAssembly.GetTypes().Where(t => t.Name.EndsWith("_Mapping"));
+            foreach (var item in subtypes)
+            {
+                dynamic configurationInstance = Activator.CreateInstance(item);
+                modeBuilder.Configurations.Add(configurationInstance);
+            }
 
             modeBuilder.Properties<string>().Configure(e => e.HasColumnType("varchar"));
 

@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SGL.Domain\SGL.Domain.csproj" />
-    <ProjectReference Include="..\SGL.Infra.Data\SGL.Infra.Data.csproj" />
+    <ProjectReference Include="..\SGL.Infra.Data2\SGL.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

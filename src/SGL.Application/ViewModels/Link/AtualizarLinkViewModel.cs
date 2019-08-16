@@ -6,5 +6,11 @@ namespace SGL.Application.ViewModels
 {
     public class AtualizarLinkViewModel
     {
+        public int LinkId { get; set; }
+        public string Url { get; set; }
+        public string Descricao { get; set; }
+        public string Icone { get; set; }
+        public int? LivroId { get; set; }
+        public virtual LivroViewModel Livro { get; set; }
     }
 }

@@ -9,6 +9,6 @@ namespace SGL.Domain.Entity
         public int GeneroId { get; set; }
         public string Descricao { get; set; }
         public int LivroId { get; set; }
-        public ICollection<Livro> Livros { get; set; }
+        public virtual ICollection<Livro> Livros { get; set; }
     }
 }

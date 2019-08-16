@@ -6,10 +6,13 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.2.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SGL.Domain\SGL.Domain.csproj" />
+    <ProjectReference Include="..\SGL.Infra.CrossCutting\SGL.Infra.CrossCutting.csproj" />
+    <ProjectReference Include="..\SGL.UI.Web\SGL.UI.Web.csproj" />
   </ItemGroup>
 
 </Project>
