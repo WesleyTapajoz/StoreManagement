@@ -74,15 +74,15 @@ namespace SGL.Infra.Data.Migrations
             var Generos = new List<Genero>
             {
                 new Genero {
-                    Descricao = "Use A Cabeça! C#",
+                    Descricao = "Literatura",
                 },
 
                 new Genero {
-                    Descricao = "Informática e Tecnologia - Programação",
+                    Descricao = "Teconologia",
                 },
 
                   new Genero {
-                    Descricao = "Design de software",
+                    Descricao = "Distopia",
                 },
 
             };
@@ -115,42 +115,45 @@ namespace SGL.Infra.Data.Migrations
             var Livros = new List<Livro>
             {
                 new Livro {
+                    LivroId = 1,
                     Titulo = "Use A Cabeça! C#",
                     DataPublicacao = DateTime.Now,
                     Paginas = 738,
                     Genero = Generos[0],
-                    AutorId = 0,
+                    Autor =  Autores[0],
                     Editora = Editoras[0],
-                    Descricao = "O Use a Cabeça! C# – 2ª Edição é uma experiência completa de aprendizagem para a programação com C#, .NET Framework e IDE Visual Studio. Construído para ser assimilado rapidamente pela sua mente, este livro cobre o C# & .NET 4.0 e o Visual Studio 2010, e ensina tudo, desde a herança até a serialização. Você consultará seus dados com o LINQ, desenhará gráficos e animação e aprenderá as classes e a programação orientada a objetos, tudo através do desenvolvimento de jogos, fazendo projetos práticos e resolvendo quebra-cabeças. Você será um programador C# sólido e terá muita diversão no caminho",
+                    Descricao = "O Use a Cabeça! C# – 2ª Edição é uma experiência completa de aprendizagem para a programação com C#.",
                     Sinopse = "Um guia de aprendizagem para a programação no mundo real com visual C# e .NET",
                     Capa = "comum",
-                    LinkId = 0
+                    Link = links[0]
                 },
 
                  new Livro {
+                    LivroId = 2,
                     Titulo = "Use A Cabeça! C#",
                     DataPublicacao = DateTime.Now,
                     Paginas = 800,
                     Genero =  Generos[1],
-                    AutorId = 1,
+                    Autor = Autores[1],
                     Editora = Editoras[1],
-                    Descricao = "Amplie seus conhecimentos e aprenda os fundamentos do Visual C# 2013. Destinado a programadores que estão começando a usar o Visual C# 2013, este tutorial fornece orientações passo a passo e exercícios práticos que vão ajudá-lo a dominar os tópicos e as técnicas essenciais. Descubra como: Criar e depurar aplicativos C# no Visual Studio 2013; Trabalhar com variáveis, identificadores, operadores e métodos; Criar interfaces e definir classes abstratas; Escrever código robusto que pode capturar e tratar exceções; Exibir e editar dados utilizando vinculação de dados com o Entity Framework do Microsoft ADO.NET; Responder a entradas de usuário e gestos baseados em toque; Tratar eventos de várias fontes; Desenvolver seu primeiro aplicativo Windows 8.1.",
+                    Descricao = "Amplie seus conhecimentos e aprenda os fundamentos do Visual C# 2013.",
                     Sinopse = "Desenvolvedor Passo a Passo Microsoft Visual C# 2013",
                     Capa = "comum",
-                    LinkId = 1
+                    Link = links[1]
                 },
 
                   new Livro {
+                    LivroId = 3,
                     Titulo = "PROFESSIONAL C# PROGRAMANDO",
                     DataPublicacao = DateTime.Now,
                     Paginas = 1156,
                     Genero =  Generos[2],
-                    AutorId = 2,
+                    Autor = Autores[2],
                     Editora = Editoras[2],
-                    Descricao = "A linguagem C# é descrita como a mais importante tecnologia para desenvolvedores dos últimos anos, assim como seu ambiente associado - o .NET Framewor",
-                    Sinopse = "A linguagem C# é descrita como a mais importante tecnologia para desenvolvedores dos últimos anos, assim como seu ambiente associado - o .NET Framework. O .NET fornece um novo ambiente no qual você pode desenvolver quase todos os tipos de aplicação Windows ou com base na Web, e C# é  a linguagem de programação que foi projetada especificamente para o .NET.Este livro é a ferramenta ideal para conhecer e aprofundar-se no estudo da linguagem C# e da plataforma .NET.",
+                    Descricao = "A linguagem C# é descrita como a mais importante tecnologia para desenvolvedores dos últimos anos, assim como seu ambiente associado - o .NET Framework",
+                    Sinopse = "A linguagem C# é descrita como a mais importante tecnologia para desenvolvedores dos últimos anos, assim como seu ambiente associado - o .NET Framework",
                     Capa = "comum",
-                    LinkId = 2
+                    Link = links[2]
                 }
 
             };

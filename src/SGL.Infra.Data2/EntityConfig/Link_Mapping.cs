@@ -15,7 +15,7 @@ namespace SGL.Infra.Data.EntityConfig
             HasKey(x => x.LinkId);
 
             Property(p => p.Icone)
-                .IsRequired();
+                .IsOptional();
 
             Property(p => p.Url)
                 .IsRequired();
@@ -23,8 +23,7 @@ namespace SGL.Infra.Data.EntityConfig
             Property(p => p.Descricao)
                 .IsRequired();
 
-            Property(p => p.Descricao)
-             .IsRequired();
+         
         }
     }
 }

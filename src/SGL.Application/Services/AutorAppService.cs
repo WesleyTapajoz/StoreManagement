@@ -20,24 +20,23 @@ namespace SGL.Application.Services
         {
             _autorService = autorService;
         }
-        public AdicionarAutorViewModel Adicionar(AdicionarAutorViewModel obj)
+        public Autor Adicionar(Autor obj)
         {
-            var autor = Mapper.Map<AdicionarAutorViewModel, Autor>(obj);
 
             BeginTransaction();
-            var returno = _autorService.Adicionar(autor);
+            var returno = _autorService.Adicionar(obj);
             Commit();
 
-            return Mapper.Map<Autor, AdicionarAutorViewModel>(returno);
+            return  returno;
         }
 
-        public AtualizarAutorViewModel Atualizar(AtualizarAutorViewModel obj)
+        public Autor Atualizar(Autor obj)
         {
             BeginTransaction();
-            var autorReturn = _autorService.Atualizar(Mapper.Map<AtualizarAutorViewModel, Autor>(obj));
+            var autorReturn = _autorService.Atualizar(obj);
             Commit();
 
-            return Mapper.Map<Autor, AtualizarAutorViewModel>(autorReturn);
+            return autorReturn;
         }
 
         public void Dispose()
@@ -46,19 +45,22 @@ namespace SGL.Application.Services
             GC.SuppressFinalize(this);
         }
 
-        public AutorViewModel ObterPorId(int id)
+        public Autor ObterPorId(int id)
         {
-            return Mapper.Map<Autor, AutorViewModel>(_autorService.ObterPorId(id));
+            return  _autorService.ObterPorId(id);
         }
 
-        public IEnumerable<AutorViewModel> ObterTodos()
+        public IQueryable<Autor> ObterTodos()
         {
-            return Mapper.Map<IEnumerable<Autor>, IEnumerable<AutorViewModel>>(_autorService.ObterTodos());
+            return _autorService.ObterTodos();
         }
 
         public void Remover(int id)
         {
+            BeginTransaction();
             _autorService.Remover(id);
+            Commit();
+
         }
     }
 }

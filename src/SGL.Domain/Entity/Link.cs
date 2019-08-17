@@ -11,6 +11,6 @@ namespace SGL.Domain.Entity
         public string Descricao { get; set; }
         public string Icone { get; set; }
         public int? LivroId { get; set; }
-        public virtual Livro Livro { get; set; }
+        public virtual ICollection<Livro> Livros { get; set; }
     }
 }

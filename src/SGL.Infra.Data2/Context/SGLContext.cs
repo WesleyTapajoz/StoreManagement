@@ -1,5 +1,6 @@
 ﻿using SGL.Domain.Entity;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -12,7 +13,7 @@ namespace SGL.Infra.Data.Context
     {
         public SGLContext() : base("name=strConexaoSGL")
         {
-           
+
         }
 
         #region 1. Entities
@@ -41,5 +42,33 @@ namespace SGL.Infra.Data.Context
             modeBuilder.Properties<string>().Configure(e => e.HasColumnType("varchar"));
 
         }
+
+        public override int SaveChanges()
+        {
+            var entriesSearch = ChangeTracker.Entries().Where(entry => entry.State != EntityState.Unchanged);
+            var entries = new List<DbEntityEntry>();
+            var states = new List<EntityState>();
+            foreach (var entry in entriesSearch)
+            {
+                entries.Add(entry);
+                states.Add(entry.State);
+            }
+            foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DataPublicacao") != null))
+            {
+               
+                    if (entry.State == EntityState.Added)
+                    {
+                        entry.Property("DataPublicacao").CurrentValue = DateTime.Now;
+                    }
+
+                    if (entry.State == EntityState.Modified)
+                    {
+                        entry.Property("DataPublicacao").IsModified = false;
+                    }
+            }
+
+            return base.SaveChanges();
+        }
+
     }
 }

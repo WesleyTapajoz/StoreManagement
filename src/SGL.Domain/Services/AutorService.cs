@@ -3,6 +3,7 @@ using SGL.Domain.Interfaces.Repository;
 using SGL.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace SGL.Domain.Services
@@ -37,7 +38,7 @@ namespace SGL.Domain.Services
             return _autorRepository.ObterPorId(id);
         }
 
-        public IEnumerable<Autor> ObterTodos()
+        public IQueryable<Autor> ObterTodos()
         {
             return _autorRepository.ObterTodos();
         }

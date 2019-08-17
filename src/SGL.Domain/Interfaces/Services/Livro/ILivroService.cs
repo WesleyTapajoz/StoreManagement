@@ -10,7 +10,7 @@ namespace SGL.Domain.Interfaces.Services
     {
         Livro Adicionar(Livro obj);
         Livro Atualizar(Livro obj);
-        IEnumerable<Livro> ObterTodos();
+        IQueryable<Livro> ObterTodos();
         Livro ObterPorId(int id);
         void Remover(int id);
     }

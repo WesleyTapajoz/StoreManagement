@@ -6,6 +6,7 @@ using SGL.Domain.Interfaces.Services;
 using SGL.Infra.Data;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SGL.Application.Services
@@ -21,26 +22,21 @@ namespace SGL.Application.Services
             _editoraService = editoraService;
         }
 
-        public AdicionarEditoraViewModel Adicionar(AdicionarEditoraViewModel obj)
+        public Editora Adicionar(Editora obj)
         {
-            var editora = Mapper.Map<AdicionarEditoraViewModel, Editora>(obj);
-
             BeginTransaction();
-            var returno = _editoraService.Adicionar(editora);
+            var returno = _editoraService.Adicionar(obj);
             Commit();
 
-            return Mapper.Map<Editora, AdicionarEditoraViewModel>(returno);
+            return returno;
         }
 
-        public AtualizarEditoraViewModel Atualizar(AtualizarEditoraViewModel obj)
+        public Editora Atualizar(Editora obj)
         {
-            var editora = Mapper.Map<AtualizarEditoraViewModel, Editora>(obj);
-
             BeginTransaction();
-            var returno = _editoraService.Atualizar(editora);
+            var returno = _editoraService.Atualizar(obj);
             Commit();
-
-            return Mapper.Map<Editora, AtualizarEditoraViewModel>(returno);
+            return returno;
         }
 
         public void Dispose()
@@ -49,19 +45,21 @@ namespace SGL.Application.Services
             GC.SuppressFinalize(this);
         }
 
-        public EditoraViewModel ObterPorId(int id)
+        public Editora ObterPorId(int id)
         {
-            return Mapper.Map<Editora, EditoraViewModel>(_editoraService.ObterPorId(id));
+            return _editoraService.ObterPorId(id);
         }
 
-        public IEnumerable<EditoraViewModel> ObterTodos()
+        public IQueryable<Editora> ObterTodos()
         {
-            return Mapper.Map<IEnumerable<Editora>, IEnumerable<EditoraViewModel>>(_editoraService.ObterTodos());
+            return _editoraService.ObterTodos();
         }
 
         public void Remover(int id)
         {
+            BeginTransaction();
             _editoraService.Remover(id);
+            Commit();
         }
     }
 }

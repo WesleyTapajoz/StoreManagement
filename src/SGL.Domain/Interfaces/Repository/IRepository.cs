@@ -10,7 +10,7 @@ namespace SGL.Domain.Interfaces.Repository
     {
         TEntity Adicionar(TEntity obj);
         TEntity Atualizar(TEntity obj);
-        IEnumerable<TEntity> ObterTodos();
+        IQueryable<TEntity> ObterTodos();
         TEntity ObterPorId(int id);
         void Remover(int id);
 

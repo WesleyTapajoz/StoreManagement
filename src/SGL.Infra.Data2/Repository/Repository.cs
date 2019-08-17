@@ -68,7 +68,7 @@ namespace SGL.Infra.Data.Repository
             GC.SuppressFinalize(this);
         }
 
-        IEnumerable<TEntity> IRepository<TEntity>.ObterTodos()
+        IQueryable<TEntity> IRepository<TEntity>.ObterTodos()
         {
             IQueryable<TEntity> query = DbSet;
             return query;

@@ -34,10 +34,6 @@ namespace SGL.Infra.Data.EntityConfig
 
             Property(x => x.Sinopse)
                     .IsRequired();
-
-            HasMany(x => x.Links)
-                .WithOptional(x => x.Livro)
-                .HasForeignKey(x => x.LivroId);
         }
     }
 }

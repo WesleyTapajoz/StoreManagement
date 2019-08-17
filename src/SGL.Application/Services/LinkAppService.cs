@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using SGL.Application.Interfaces;
 using SGL.Application.ViewModels;
@@ -19,26 +20,23 @@ namespace SGL.Application.Services
             _linkService = linkService;
         }
 
-        public AdicionarLinkViewModel Adicionar(AdicionarLinkViewModel obj)
+        public Link Adicionar(Link obj)
         {
-            var link = Mapper.Map<AdicionarLinkViewModel, Link>(obj);
-
+          
             BeginTransaction();
-            var returno = _linkService.Adicionar(link);
+            var returno = _linkService.Adicionar(obj);
             Commit();
 
-            return Mapper.Map<Link, AdicionarLinkViewModel>(returno);
+            return returno;
         }
 
-        public AtualizarLinkViewModel Atualizar(AtualizarLinkViewModel obj)
+        public Link Atualizar(Link obj)
         {
-            var link = Mapper.Map<AtualizarLinkViewModel, Link>(obj);
-
             BeginTransaction();
-            var returno = _linkService.Atualizar(link);
+            var returno = _linkService.Atualizar(obj);
             Commit();
 
-            return Mapper.Map<Link, AtualizarLinkViewModel>(returno);
+            return  returno;
         }
 
         public void Dispose()
@@ -47,19 +45,21 @@ namespace SGL.Application.Services
             GC.SuppressFinalize(this);
         }
 
-        public LinkViewModel ObterPorId(int id)
+        public Link ObterPorId(int id)
         {
-            return Mapper.Map<Link, LinkViewModel>(_linkService.ObterPorId(id));
+            return _linkService.ObterPorId(id);
         }
 
-        public IEnumerable<LinkViewModel> ObterTodos()
+        public IQueryable<Link> ObterTodos()
         {
-            return Mapper.Map<IEnumerable<Link>, IEnumerable<LinkViewModel>>(_linkService.ObterTodos());
+            return _linkService.ObterTodos();
         }
 
         public void Remover(int id)
         {
+            BeginTransaction();
             _linkService.Remover(id);
+            Commit();
         }
     }
 }

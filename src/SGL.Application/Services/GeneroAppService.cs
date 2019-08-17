@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using SGL.Application.Interfaces;
 using SGL.Application.ViewModels;
@@ -19,26 +20,23 @@ namespace SGL.Application.Services
             _generoService = generoService;
         }
 
-        public AdicionarGeneroViewModel Adicionar(AdicionarGeneroViewModel obj)
+        public Genero Adicionar(Genero obj)
         {
-            var genero = Mapper.Map<AdicionarGeneroViewModel, Genero>(obj);
-
             BeginTransaction();
-            var returno = _generoService.Adicionar(genero);
+            var returno = _generoService.Adicionar(obj);
             Commit();
 
-            return Mapper.Map<Genero, AdicionarGeneroViewModel>(returno);
+            return returno;
         }
 
-        public AtualizarGeneroViewModel Atualizar(AtualizarGeneroViewModel obj)
+        public Genero Atualizar(Genero obj)
         {
-            var genero = Mapper.Map<AtualizarGeneroViewModel, Genero>(obj);
 
             BeginTransaction();
-            var returno = _generoService.Atualizar(genero);
+            var returno = _generoService.Atualizar(obj);
             Commit();
 
-            return Mapper.Map<Genero, AtualizarGeneroViewModel>(returno);
+            return returno;
         }
 
         public void Dispose()
@@ -47,19 +45,21 @@ namespace SGL.Application.Services
             GC.SuppressFinalize(this);
         }
 
-        public GeneroViewModel ObterPorId(int id)
+        public Genero ObterPorId(int id)
         {
-            return Mapper.Map<Genero, GeneroViewModel>(_generoService.ObterPorId(id));
+            return _generoService.ObterPorId(id);
         }
 
-        public IEnumerable<GeneroViewModel> ObterTodos()
+        public IQueryable<Genero> ObterTodos()
         {
-            return Mapper.Map<IEnumerable<Genero>, IEnumerable<GeneroViewModel>>(_generoService.ObterTodos());
+            return _generoService.ObterTodos();
         }
 
         public void Remover(int id)
         {
+            BeginTransaction();
             _generoService.Remover(id);
+            Commit();
         }
     }
 }

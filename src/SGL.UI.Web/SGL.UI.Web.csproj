@@ -156,6 +156,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\EnumerableExtensions.cs" />
+    <Compile Include="Helpers\ExpressionParameterReplacer.cs" />
+    <Compile Include="Helpers\MVCExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +203,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Livro\Index.cshtml" />
     <Content Include="Views\Livro\_Resultado.cshtml" />
+    <Content Include="Views\Livro\Adicionar.cshtml" />
+    <Content Include="Views\Livro\Editar.cshtml" />
+    <Content Include="Views\Livro\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

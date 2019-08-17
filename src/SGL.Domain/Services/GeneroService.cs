@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using SGL.Domain.Entity;
 using SGL.Domain.Interfaces.Repository;
 using System.Linq.Expressions;
+using System.Linq;
 
 namespace SGL.Domain.Services
 {
@@ -38,7 +39,7 @@ namespace SGL.Domain.Services
             return _generoRepository.ObterPorId(id);
         }
 
-        public IEnumerable<Genero> ObterTodos()
+        public IQueryable<Genero> ObterTodos()
         {
             return _generoRepository.ObterTodos();
         }

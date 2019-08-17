@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using AutoMapper;
+using System.Linq;
 using SGL.Application.Interfaces;
-using SGL.Application.ViewModels;
 using SGL.Domain.Entity;
 using SGL.Domain.Interfaces.Services;
 using SGL.Infra.Data;
@@ -19,22 +18,22 @@ namespace SGL.Application.Services
             _livroService = livroService;
         }
 
-        public AdicionarLivroViewModel Adicionar(AdicionarLivroViewModel obj)
+        public Livro Adicionar(Livro obj)
         {
             BeginTransaction();
-            var autorReturn = _livroService.Adicionar(Mapper.Map<AdicionarLivroViewModel, Livro>(obj));
+            var autorReturn = _livroService.Adicionar(obj);
             Commit();
 
-            return Mapper.Map<Livro, AdicionarLivroViewModel>(autorReturn);
+            return autorReturn;
         }
 
-        public AtualizarLivroViewModel Atualizar(AtualizarLivroViewModel obj)
+        public Livro Atualizar(Livro obj)
         {
             BeginTransaction();
-            var autorReturn = _livroService.Atualizar(Mapper.Map<AtualizarLivroViewModel, Livro>(obj));
+            var autorReturn = _livroService.Atualizar(obj);
             Commit();
 
-            return Mapper.Map<Livro, AtualizarLivroViewModel>(autorReturn);
+            return autorReturn;
         }
 
         public void Dispose()
@@ -43,22 +42,23 @@ namespace SGL.Application.Services
             GC.SuppressFinalize(this);
         }
 
-        public LivroViewModel ObterPorId(int id)
+        public Livro ObterPorId(int id)
         {
-            return Mapper.Map<Livro, LivroViewModel>(_livroService.ObterPorId(id));
+            return  _livroService.ObterPorId(id);
 
         }
 
-        public IEnumerable<Livro> ObterTodos()
+        public IQueryable<Livro> ObterTodos()
         {
-            var entity = _livroService.ObterTodos();
-            //var retorno = Mapper.Map<IEnumerable<Livro>, IEnumerable<LivroViewModel>>(entity);
+            var entity = _livroService.ObterTodos();           
             return entity;
         }
 
         public void Remover(int id)
         {
+            BeginTransaction();
             _livroService.Remover(id);
+            Commit();
         }
     }
 }

@@ -1,0 +1,89 @@
+﻿@model SGL.Domain.Entity.Livro
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Livro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paginas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paginas)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Genero")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genero.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Autor")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Autor.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Editora")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Editora.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Descrição")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sinopse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sinopse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Capa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Capa)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Link")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Link.Descricao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Voltar", "Index", "Livro")
+</p>

@@ -20,6 +20,6 @@ namespace SGL.Domain.Entity
         public string Sinopse { get; set; }
         public string Capa { get; set; }
         public int? LinkId { get; set; }
-        public virtual ICollection<Link> Links { get; set; }
+        public virtual Link Link { get; set; }
     }
 }
