@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGL.Infra.IoC", "src\SGL.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGL.Infra.Data", "src\SGL.Infra.Data2\SGL.Infra.Data.csproj", "{F3B110D3-3DAE-44F5-A1C7-494CE5BC9A2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "src\UnitTests\UnitTests.csproj", "{47D351E9-9F5A-405E-B166-A1FD17D66B5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{F3B110D3-3DAE-44F5-A1C7-494CE5BC9A2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3B110D3-3DAE-44F5-A1C7-494CE5BC9A2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3B110D3-3DAE-44F5-A1C7-494CE5BC9A2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47D351E9-9F5A-405E-B166-A1FD17D66B5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47D351E9-9F5A-405E-B166-A1FD17D66B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47D351E9-9F5A-405E-B166-A1FD17D66B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47D351E9-9F5A-405E-B166-A1FD17D66B5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{04369E20-453D-4192-9D4F-A6F1717D473D} = {7F565E68-FA83-40CF-A8C4-949F72138ABE}
 		{8FF74EF5-6304-45C1-8771-BFC8D9044081} = {72C606FE-DFED-41C8-B342-36B0320F1132}
 		{F3B110D3-3DAE-44F5-A1C7-494CE5BC9A2B} = {8B7BBDF2-3EC0-4003-97F4-5780F3C319DE}
+		{47D351E9-9F5A-405E-B166-A1FD17D66B5F} = {8CA6E0D9-4B6C-4AA1-BB3F-68D3480AD987}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C8B6B61-DA4D-4A2A-91C0-D2757FE3AD3B}
